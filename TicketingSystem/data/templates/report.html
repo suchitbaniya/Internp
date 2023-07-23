@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Report</title>
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 20px;
+            }
+
+            .filter-option {
+                display: flex;
+                align-items: center;
+            }
+
+            .filter-option label {
+                margin-right: 10px;
+            }
+
+            .date-selection {
+                display: flex;
+                align-items: center;
+            }
+
+            .date-selection label {
+                margin-right: 10px;
+            }
+            
+            .download-section {
+                display: flex;
+                align-items: center;
+            }
+
+            .download-section select {
+                margin-right: 10px;
+            }
+
+            .download-section button {
+                padding: 8px 12px;
+                background-color: royalblue;
+                color: #fff;
+                border: none;
+                cursor: pointer;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+            th, td {
+                padding: 10px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+            th {
+                background-color: #f2f2f2;
+            }
+
+            .done-button-container {
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+            }
+
+            .done-button {
+                padding: 8px 16px;
+                background-color: green;
+                color: #fff;
+                border: none;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <div class="filter-option">
+                <label for="filter-text">Filter:</label>
+                <input type="text" id="filter-text" placeholder="search">
+
+            </div>
+            
+            <div class="date-selection">
+                <label for="from-date">From:</label>
+                <input type="date" id="from-date">
+                <label for="to-date">To:</label>
+                <input type="date" id="to-date">
+                
+    
+            </div>
+
+            <div class="download-section">
+                <select>
+                    <option value="">Select format</option>
+                    <option value="pdf">PDF</option>
+                    <option value="csv">CSV</option>
+                    <option value="excel">Excel</option>
+                </select>
+                <button>Download</button>
+            </div>
+
+
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>SN</th>
+                    <th>Host Name</th>
+                    <th>PON</th>
+                    <th>Serial No</th>
+                    <th>Username</th>
+                    <th>Downtime</th>
+                    <th>Uptime</th>
+                </tr>
+            </thead>
+            <tbody>
+                { % for entry in report_entries %}
+                <tr>
+                    <td>{{ entry.sn }}</td>
+                    <td>{{ entry.hostname }} </td>
+                    <td>{{ entry.pon }} </td>
+                    <td>{{ entry.serial_no }} </td>
+                    <td>{{ entry.usernamae }} </td>
+                    <td>{{ entry.downtime }} </td>
+                    <td>{{ entry.uptime }} </td>
+
+                </tr>
+                
+            </tbody>
+        </table>
+        <div class="done-button-container">
+            <button class="done-button">Done</button>
+        </div>
+    </body>
+</html>
